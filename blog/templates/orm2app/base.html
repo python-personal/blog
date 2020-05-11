@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load staticfiles%}
+{% load orm2app_tags%}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <title>{% block title_block%}{%endblock%}</title>
+  </head>
+  <body>
+    <div class="content">
+      {%block content%}
+      {%endblock%}
+    </div>
+    <div class="sidebar">
+      <h2>Anu's Blog</h2>
+      <p>Total Number of published post till now: <span id='pc'>{%total_posts%}</span></p>
+<h3>Latest Posts:</h3>{%show_latest_post 2%}
+<h3>Most Commented Posts:</h3>
+{% get_most_commented_post as most_commented_posts %}
+<ul>
+  {% for post in most_commented_posts %}
+   <li>  <a id='aa' href="{{post.get_absolute_url}}">{{post.title}}</a>
+     {%endfor%}
+</li>
+</ul>
+
+    </div>
+
+
+  </body>
+</html>

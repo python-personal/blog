@@ -1,0 +1,39 @@
+
+body{background-color: red;}
+.content{
+
+width:60%;
+height:100vh;
+float:left;
+padding:0 0 0 30px;
+color:white;
+}
+.sidebar{
+  width:40%;
+  background-color: yellow;
+  float:right;
+  padding:10px;
+}
+#pc{
+  font-size: 40px;
+  font-weight: bold;
+}
+h1{
+  text-align: center;
+  border-bottom: 1px solid #bbb;
+  padding:5px;
+}
+#date{
+  color:black;
+  font-size: 12px;
+  font-style:italic;
+}
+#b1,#ch{
+  color:yellow;
+}
+#aa{
+  color:black;
+}
+a{
+  color:yellow
+}

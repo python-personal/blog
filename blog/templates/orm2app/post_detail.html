@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{%extends 'orm2app/base.html'%}
+{% block title_block%}Anu's Home Page{%endblock%}
+{%block content%}
+<h1>{{post.title}}</h1>
+<p id='date'>published on {{post.publish}} by {{post.author|title}}</p>
+<p>{{post.body|linebreaks}}<p><br><br>
+
+
+  <div class='conteiner' align='center'>
+<a href="/{{post.id}}/share" target='_blank' class='btn btn-primary'>Share Post By Email</a>
+</div>
+
+{% with comments.count as comments_count%}
+<h2>{{comments_count}} comment{{comments_count|pluralize}}</h2>
+{%endwith%}
+
+{%if comments%}
+{% for comment in comments%}
+  <p id='ch'> comment{{forloop.counter}} by {{comment.name}} on {{comment.created}}</p>
+  <div class="cb">{{comment.body|linebreaks}}</div>
+
+{%endfor%}
+{%else%}
+<p>There are no comments yet</p>
+{%endif%}
+
+{%if csubmit%}
+<h2>You comment is submitted</h2>
+{%else%}<hr>
+<br>
+<h2>You can submit your comments</h2>
+<form  method="post">
+  {{form.as_p}}
+  {%csrf_token%}
+<input type="submit"  class='btn btn-primary' name="" value="Submit Comment">
+</form>
+{%endif%}
+{%endblock%}
